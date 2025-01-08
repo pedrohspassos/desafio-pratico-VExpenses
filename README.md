@@ -195,7 +195,7 @@ Já o termo **overfitting**, é usado quando o modelo "aprende demais" os detalh
 
 Logo, a validação cruzada é uma das técnicas usadas pare resolver esse problema.
 
-#### **3.2.1 Funcionamento da Validação Cruzada***
+#### **3.2.1 Funcionamento da Validação Cruzada**
 
 Na validação cruzada, o conjunto de dados é dividido em múltiplos subconjuntos, os chamados ***folds***.
 
@@ -320,7 +320,7 @@ Podemos concluir que ***GridSearchCV*** é uma ferramenta poderosa, mas não gar
 
 ## ***5. Interpretação de Algumas Métricas***
 
-Nesta etapa, o foco é analisar como as características do conjunto de dados influenciam as previsões dos modelos e realizar uma análise das principais métricas de desempenho: Precision, Recall, F1-Score e Accuracy. Essas métricas são essenciais para compreender o comportamento dos modelos em termos de acerto e erro.
+Nesta etapa, o foco é analisar como as características do conjunto de dados influenciam as previsões dos modelos.
 
 ### **5.1 Análise das Features Mais Influentes**
 
@@ -330,7 +330,7 @@ Modelos baseados em árvoes, como **Árvore de Decisão** e **Random Forest** po
 - Nele, features com maior pontuação são mais influentes para a previsão.
 - Esse método retorna um vetor com a importância relativa de cada variável.
   - O valor de cada elemento do vetor está entre 0 e 1, e a soma das importâncias de todas as variáveis será igual a 1.
-  - Para utilizá-lo bastar o seguinte comando: ***modelo_arvore.feature_importances_***
+  - Para utilizá-lo bastar o seguinte comando: ***modelo_arvore.feature_importances_***.
 
 Modelos lineares, como a **Regressão Logística**, produzem coeficientes que representam a força e a direção do impacto de cada feature na previsão. 
 - Um coeficiente positivo indica que o aumento do valor da variável está associado a um aumento na probabilidade do evento ocorrer.
@@ -349,45 +349,44 @@ Com base nessa contextualização, vamos aprofundar a análise dos resultados.
   
 ![features_regressao](https://github.com/user-attachments/assets/f7ace5b7-3b5c-46e5-9645-0b1615f82eb4)
 
-Com base no gráfico, conseguimos concluir que as features com maior impacto para esse modelo foram, ***Anúncio Clicado*** e ***Gênero***.
+Com base no gráfico, conseguimos concluir que as features com maior impacto para esse modelo foram, ***"Anúncio Clicado"*** e ***"Gênero"***.
 
 - **Árvore de Decisão**
   
 ![features_arvore](https://github.com/user-attachments/assets/fcfcea44-2a15-4fc5-840d-6978e4beb77f)
 
-Para a árvore, as features que melhor se sobressairam foi ***Tempo no Site (min)*** e ***Gênero***.
+Para a árvore, as features que melhor se sobressairam foi ***"Tempo no Site (min)"*** e ***"Gênero"***.
 
 - **Random Forest**
 
 ![features_forest](https://github.com/user-attachments/assets/6185284f-268b-4cfb-b4cd-cb1147397b90)
 
-Para a random forest, as features ***Tempo no Site (min)*** e ***Idade*** foram as que mais tiveram impacto.
+Para a random forest, as features ***"Tempo no Site (min)"*** e ***"Idade"*** foram as que mais tiveram impacto.
 
 - **Rede Neural (MLP)**
 
 ![features_mlp](https://github.com/user-attachments/assets/6a820743-0bb6-4e20-9f8a-51cd7560d908)
 
-E para o MLP ***Anúncio Clicado*** e ***Idade*** tiveram maior peso no resultado final.
+E para o MLP ***"Anúncio Clicado"*** e ***"Idade"*** tiveram maior peso no resultado final.
 
 #### **5.1.1 Conclusões**
 
 A partir desses gráficos podemos tentar inferir algumas informações.
 
-Para ambos os modelos que apresentaram os melhores resultados **(Regressão Logística: 67,5% e MLP: 67%)**, a variável com maior impacto na previsão assertiva foi o ***Anúncio Clicado***. 
+Para ambos os modelos que apresentaram os melhores resultados **(Regressão Logística: 67,5% e MLP: 67%)**, a variável com maior impacto na previsão assertiva foi o ***"Anúncio Clicado"***. 
 
 Isso destaca que indivíduos que clicaram no anúncio demonstram uma maior propensão a realizar a compra do imóvel. Essa descoberta sugere que o clique no anúncio é um forte indicador de interesse genuíno, o que pode ser utilizado como um fator chave para prever a conversão em vendas.
 
-Em contrapartida, para os modelos com desempenho inferior, como **Árvore de Decisão (61%)** e **Random Forest (62,5%)**, observamos que a variável com maior impacto foi **Tempo no Site**. No entanto, isso sugere que, embora o tempo passado no site seja relevante para esses modelos, ele não parece ser um bom indicativo da probabilidade de conversão em vendas.
+Em contrapartida, para os modelos com desempenho inferior, como **Árvore de Decisão (61%)** e **Random Forest (62,5%)**, observamos que a variável com maior impacto foi ***"Tempo no Site (min)"***. No entanto, isso sugere que, embora o tempo passado no site seja relevante para esses modelos, ele não parece ser um bom indicativo da probabilidade de conversão em vendas.
 
-Essa análise fica mais clara quando comparamos com os modelos de melhor desempenho, **Regressão Logística (67,5%)** e **MLP (67%)**, onde o **Tempo no Site** teve um peso significativamente menor entre as variáveis. Isso reforça a ideia de que, ao contrário do que sugerem os modelos menos eficazes, essa feature não possui um forte poder preditivo para determinar se uma compra será realizada ou não.
+Essa análise fica mais clara quando comparamos com os modelos de melhor desempenho, **Regressão Logística (67,5%)** e **MLP (67%)**, onde o ***"Tempo no Site (min)"*** teve um peso significativamente menor entre as variáveis. Isso reforça a ideia de que, ao contrário do que sugerem os modelos menos eficazes, essa feature não possui um forte poder preditivo para determinar se uma compra será realizada ou não.
 
-Outra observação importante é que, por mais intuitivo e tentador que seja imaginar que a variável **Renda Anual** teria uma grande influência nos modelos, isso não se concretizou. Em todos os modelos testados, a **Renda Anual** não foi nem mesmo a segunda variável mais importante, o que nos mostra que, muitas vezes, nossa intuição sobre quais fatores são mais relevantes pode não refletir a realidade dos dados. Essa análise reforça a importância de basear as decisões em evidências e resultados quantitativos, em vez de apenas suposições.
+Outra observação importante é que, por mais intuitivo e tentador que seja imaginar que a variável **Renda Anual** teria uma grande influência nos modelos, isso não se concretizou. Em todos os modelos testados, a ***"Renda Anual (em $)"*** não foi nem mesmo a segunda variável mais importante, o que nos mostra que, muitas vezes, nossa intuição sobre quais fatores são mais relevantes pode não refletir a realidade dos dados. Essa análise reforça a importância de basear as decisões em evidências e resultados quantitativos, em vez de apenas suposições.
 
-Agora, com base nessa análise de importância das variáveis, o próximo passo será a avaliação das métricas de desempenho dos modelos, como Precisão, Recall, F1-Score e Acurácia, para entendermos melhor a efetividade de cada modelo na tarefa de classificação e prever a decisão de compra.
 
 ### **5.2 Análise das Métricas de Desempenho**
 
-Essa primeira análise será feita sobre os modelos gerados a partir do cross-validation.
+Essa análise será feita sobre os modelos gerados a partir do cross-validation.
 
 Vamos agora analisar um aspecto que frequentemente é negligenciado, mas que pode fornecer informações valiosas, o ***Desvio Padrão***. 
 
@@ -411,17 +410,15 @@ E por fim , a **Rede Neural (MLP)** apresenta ser um dos mais robustos, já que 
 
 ## ***6. Conclusão***
 
-Este projeto teve como objetivo desenvolver e avaliar diferentes modelos de machine learning para prever a probabilidade de um cliente realizar a compra de um imóvel com base em um conjunto de características. Através do uso de técnicas como validação cruzada e ajuste de hiperparâmetros, conseguimos otimizar e comparar a performance de diversos algoritmos, incluindo Regressão Logística, Árvore de Decisão, Random Forest e Rede Neural (MLP).
+Este projeto teve como objetivo desenvolver e avaliar diferentes modelos de machine learning para prever a probabilidade de um cliente realizar a compra de um imóvel com base em um conjunto de características. Através do uso de técnicas como validação cruzada e ajuste de hiperparâmetros, conseguimos otimizar e comparar a performance de diversos algoritmos, incluindo **Regressão Logística**, **Árvore de Decisão**, **Random Forest** e **Rede Neural (MLP)**.
 
-A partir dos resultados obtidos, foi possível observar que o uso da **validação cruzada** teve um impacto significativo no desempenho dos modelos, proporcionando uma maior generalização e redução do risco de overfitting. Modelos como a **Rede Neural (MLP)**, que inicialmente apresentavam um desempenho inferior, foram otimizados e atingiram melhores resultados comparados a outros algoritmos. Isso destaca a importância de se utilizar uma abordagem robusta, como a validação cruzada, para avaliar o desempenho de maneira mais confiável.
+A partir dos resultados obtidos, foi possível observar que o uso da ***validação cruzada*** teve um impacto significativo no desempenho dos modelos, proporcionando uma maior generalização e redução do risco de **overfitting**. Modelos como a **Rede Neural (MLP)**, que inicialmente apresentavam um desempenho inferior, foram otimizados e atingiram melhores resultados comparados a outros algoritmos. Isso destaca a importância de se utilizar uma abordagem robusta, como a validação cruzada, para avaliar o desempenho de maneira mais confiável.
 
-Além disso, a análise de importância das variáveis revelou informações interessantes sobre as características mais influentes na decisão de compra. Para a maioria dos modelos, variáveis como **"Anúncio Clicado"** demonstraram ter um peso significativo na previsão de compra, enquanto variáveis como **"Tempo no Site"** e **"Renda Anual"** não mostraram ser tão indicativas, desafiando algumas hipóteses iniciais e mostrando a complexidade dos dados.
+Além disso, a análise de importância das variáveis revelou informações interessantes sobre as características mais influentes na decisão de compra. Para a maioria dos modelos, variáveis como ***"Anúncio Clicado"*** demonstraram ter um peso significativo na previsão de compra, enquanto variáveis como ***"Tempo no Site (min)"*** e **"Renda Anual (em $)"** não mostraram ser tão indicativas, desafiando algumas hipóteses iniciais e mostrando a complexidade dos dados.
 
 Os próximos passos envolvem explorar ainda mais o desempenho dos modelos, testando novos hiperparâmetros e experimentando diferentes abordagens de tratamento de dados. Isso incluiria a incorporação de técnicas de engenharia de atributos, ajustes finos nos modelos e a avaliação de novas estratégias de pré-processamento para otimizar ainda mais a acurácia e a generalização dos modelos.
 
 Gostaria de expressar minha sincera gratidão pela oportunidade de realizar esse desafio. Foi uma experiência extremamente enriquecedora, que me permitiu aplicar e expandir meus conhecimentos. Agradeço pela confiança e estou empolgado para possíveis próximas etapas.
-
-
 
 ## 🛠 Ferramentas
 - Python 
@@ -432,8 +429,8 @@ Gostaria de expressar minha sincera gratidão pela oportunidade de realizar esse
     - Scikit Learn 
     - Seaborn
     - Matplotlib
+      
 ## Referências
-
 - [Pandas](https://pandas.pydata.org/)
 - [NumPy](https://numpy.org/)
 - [YData Profiling](https://github.com/ydataai/ydata-profiling)
@@ -445,5 +442,6 @@ Gostaria de expressar minha sincera gratidão pela oportunidade de realizar esse
 ## Autor
 
 - [@pedrohspassos](https://github.com/pedrohspassos)
+
 
 ![Blog-VExpenses](https://github.com/user-attachments/assets/2999509a-0a11-4f80-9600-37ce863e142d)
