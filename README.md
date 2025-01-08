@@ -88,11 +88,13 @@ Abaixo esta um gráfico mostrando alguns dos valores nulos achados no dataset an
 
 Existem algumas abordagens para lidar com valores nulos.
 - **Removendo os Dados Nulos**
-O objetivo aqui é excluir os registros que contêm valores nulos.
+  
+ O objetivo aqui é excluir os registros que contêm valores nulos.
 
 Essa abordagem é adequada quando apenas alguns registros estão incompletos. No entanto, pode prejudicar a qualidade do modelo, pois, ao remover um registro, também perdemos informações valiosas de outras colunas associadas a ele.
 
 - **Imputação de Valores (Média/Mediana/Moda)**
+
 O objetivo é preencher os registros com valores nulos com alguns valores estimados com base nos dados disponíveis.
 
 Para **variáveis numéricas**, é comum substituir os valores nulos pela média ou pela mediana, dependendo da distribuição dos dados.
