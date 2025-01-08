@@ -187,7 +187,7 @@ Os modelos que apresentaram os ***piores desempenhos*** foram o **Random Forest*
 
 ### **3.2 Previsão com Validação Cruzada**
 
-A validação cruzada é uma técnica utilizada em aprendizado de máquina para avaliar a performance de um modelo de forma mais robusta. Ela tem como objetivo reduzir a variação nos resultados e garantir que o modelo não esteja superajustado (overfitted) aos dados de treinamento.
+A validação cruzada é uma técnica utilizada em aprendizado de máquina para avaliar a performance de um modelo de forma mais robusta. Ela tem como objetivo reduzir a variação nos resultados e garantir que o modelo não esteja superajustado aos dados de treinamento.
 
 O termo **underfitting**, é usado quando um modelo é muito simples para capturar os padrões e relações presentes nos dados. Isso acontece geralmente quando o modelo não possui complexidade suficiente para aprender as características subjacentes dos dados, o que leva a um desempenho fraco tanto no conjunto de treinamento quanto no conjunto de teste.
 
@@ -242,8 +242,53 @@ cruzada a **Árvore de Decisão** pode ter se saído melhor porque se ajustou be
 
 Já com a validação cruzada, a **Rede Neural** mostrou sua capacidade de generalização, uma vez que foi exigida uma avaliação mais rigorosa e robusta do desempenho do modelo.
 
-
 ## ***4. Ajustando Hiperparâmetros***
+
+Para aprimorar ainda mais os resultados obtidos, podemos realizar **ajustes nos hiperparâmetros** de cada modelo. Essas modificações visam otimizar o desempenho de cada algoritmo, buscando alcançar resultados mais satisfatórios e adaptados às características específicas dos dados.
+
+Hiperparâmetros são parâmetros que controlam o comportamento de um modelo de Machine Learning, mas que não são aprendidos diretamente a partir dos dados durante o processo de treinamento.
+
+Ao contrário dos parâmetros do modelo (como os coeficientes em uma regressão linear ou os pesos em uma rede neural), os hiperparâmetros são definidos antes do treinamento e têm um impacto direto na capacidade do modelo de aprender e generalizar.
+
+Cada modelo possui um conjunto exclusivo de hiperparâmetros, que varia de acordo com o tipo de algoritmo utilizado. Abaixo, estão listados os hiperparâmetros empregados neste projeto.
+
+- [**Regressão Logística**](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html)
+  - **Regularização (C)**: controla a quantidade de penalização aplicada para evitar overfitting. Valores menores de C aplicam maior penalização, e valores maiores permitem que o modelo se ajuste mais aos dados. 
+  - **Solver**: Algoritmo utilizado para otimizar a função de custo
+- [**Árvore de Decisão**](https://scikit-learn.org/stable/modules/generated/sklearn.tree.DecisionTreeClassifier.html)
+  - **Profundidade máxima (max_depth)**: Limita a profundidade da árvore, controlando a complexidade do modelo. Um valor muito alto pode causar overfitting, enquanto um valor muito baixo pode causar underfitting.
+  - **Número mínimo de amostras para dividir um nó (min_samples_split)**: Define o número mínimo de amostras necessárias para realizar uma divisão, ajudando a controlar a complexidade do modelo.
+
+- [**Random Forest**](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html)
+  - **Número de árvores (n_estimators)**: Número de árvores que compõem a floresta, mais árvores podem aumentar a precisão, mas também podem aumentar o tempo de treinamento. 
+  - **Profundidade máxima (max_depth)**: Limita a profundidade máxima das árvores individuais na floresta.
+  - **Número mínimo de amostras para dividir um nó (min_samples_split)**: Define o número mínimo de amostras necessárias para realizar uma divisão. 
+- [**Rede Neural**](https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html)
+  - **Tamanho da camada oculta (hidden_layer_sizes)**: Define o número de neurônios e camadas ocultas.
+  - **Função de Ativação (activation)**: Determina quais funções de ativação serão usadas, nese caso foi usado a "relu" e a "tanh".
+  - **Alpha**: Controla a regularização L2.
+
+A escolha desses parâmetros foi baseada na documentação fornecida pelo Scikit-learn, cujos detalhes estão anexados nos nomes dos respectivos modelos.
+
+Uma vez definidos alguns possíveis valores para esses parâmetros, podemos utilizar uma técnica chamada ***GridSearchCV***, que tem como objetivo otimizar os hiperparâmetros de um modelo de machine learning. Essa técnica permite encontrar a melhor combinação de parâmetros, resultando no melhor desempenho do modelo. Ela funciona realizando uma busca exaustiva em um espaço pré-definido de valores para os hiperparâmetros especificados.
+
+Seu funcionamento é teoricamente simples, ele avalia todas as combinações possíveis dos parâmetros fornecidos, treinando e avaliando o modelo para cada conjunto de hiperparâmetros.
+
+### **4.1 Etapas**
+
+- **Definição de um conjunto de parâmetros**: Para cada modelo, você define um conjunto de hiperparâmetros a serem ajustados.
+- **Treinamento e avaliação**: O algoritmo treina e avalia o modelo para cada combinação possível desses parâmetros, utilizando validação cruzada.
+- **Seleção do melhor modelo**: Após a execução do grid search, o modelo com a melhor combinação de hiperparâmetros é selecionado.
+
+Essa abordagem é extremamente vantajosa, pois garante a identificação da melhor configuração para os modelos dentro dos parâmetros especificados. 
+
+Seu único porém é o alto custo computacional, já que, por se tratar de uma busca exaustiva, pode ser bastante cara, especialmente se o espaço de busca for grande, ou seja, se houver muitos parâmetros a serem ajustados.
+
+Abaixo podemos verificar os resultados obtidos após a aplicação dessa ferramenta.
+
+![otimizados](https://github.com/user-attachments/assets/00b43a89-0c34-436c-bb4d-b72fe1087fa1)
+
+Dessa forma, proporciona um ***ajuste fino dos hiperparâmetros***, o ***evitamento de underfitting e overfitting*** e uma ***escolha mais assertiva dos parâmetros***.
 
 ## 🛠 Ferramentas
 - Python 
