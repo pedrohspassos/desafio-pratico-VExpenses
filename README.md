@@ -2,9 +2,7 @@
 # **Desafio Prático - VExpenses**
 ![Blog-VExpenses](https://github.com/user-attachments/assets/2999509a-0a11-4f80-9600-37ce863e142d)
 
-Este repositório contém o código e o processo para construir um modelo de classificação que prevê se um usuário comprará uma casa em um site imobiliário.
-
-
+Este repositório foi criado com o objetivo de apresentar o trabalho desenvolvido no estudo de caso para a vaga de estágio na área de Ciência de Dados da empresa VExpenses, especializada em soluções de gerenciamento e automação de despesas corporativas.
 
 ## ***Introdução***
 
@@ -82,7 +80,11 @@ Podem gerar problemas como:
 - **Erro de Execução de Algoritmos**
   - Pois, muitos algoritmos de aprendizado de máquina não conseguem lidar com valores nulos e podem gerar erros durante o treinamento ou a previsão.
 - **Impacto nas Métricas**
-  - Em modelos de regressão ou classificação, a presença de valores nulos pode afetar a análise de erros, tornando as métricas de avaliação 
+  - Em modelos de regressão ou classificação, a presença de valores nulos pode afetar a análise de erros, tornando as métricas de avaliação
+
+Abaixo esta um gráfico mostrando alguns dos valores nulos achados no dataset analisado.
+
+![valores_nulos](https://github.com/user-attachments/assets/d051b18c-0802-44d0-b9bc-974663fdd501)
 
 Existem algumas abordagens para lidar com valores nulos.
 - **Removendo os Dados Nulos**
