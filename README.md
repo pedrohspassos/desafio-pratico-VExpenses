@@ -1,4 +1,6 @@
+
 # **Desafio Prático - VExpenses**
+![Blog-VExpenses](https://github.com/user-attachments/assets/2999509a-0a11-4f80-9600-37ce863e142d)
 
 Este repositório contém o código e o processo para construir um modelo de classificação que prevê se um usuário comprará uma casa em um site imobiliário.
 
@@ -172,7 +174,8 @@ Nesta etapa, foram realizados os seguintes passos para gerar os modelos:
 
 Após a conclusão desses passos, foi gerado um gráfico exibindo os resultados de acurácia obtidos pelos modelos, como pode ser observado a seguir.
 
-- BOTAR IMAGEM
+![resultados_sem_cv](https://github.com/user-attachments/assets/6273ae19-445d-492f-8efe-3eb789bda7d9)
+
 
 Podemos ver que o modelo que apresentou o ***melhor desempenho*** foi a **Árvore de Decisão**, que obteve a maior acurácia entre todos os modelos testados. Isso sugere que a simplicidade e a capacidade de interpretação dessa técnica foram vantajosas para este conjunto de dados, permitindo que ela capturasse de forma eficaz as relações entre as variáveis.
 
@@ -210,7 +213,7 @@ Isso ocorre porque podemos reutilizar a separação das variáveis, e, ao tratar
 
 Após a conclusão desses passos, foi gerado um gráfico exibindo os resultados de acurácia obtidos pelos modelos, como pode ser observado a seguir.
 
-- BOTAR IMAGEM
+![resultado_com_cv](https://github.com/user-attachments/assets/6e7ae7f3-37ec-402d-854b-eca90046c75b)
 
 Podemos obervar que o modelo que apresentou o **melhor desempenho** nesse novo contexto foi a **Rede Neural (MLP)**, obtendo a maior acurácia entre os demais. 
 
@@ -220,7 +223,7 @@ Já o modelo que apresentou o **pior desempenho** foi a **Árvore de Decisão**,
 
 Uma vez realizada ambas abordagens, vamos analisar um pouco as diferenças obtidas.
 
-- Colocar IMAGEM
+![comparacao](https://github.com/user-attachments/assets/3f15f254-2439-4cc1-beb5-82114a468592)
 
 Uma observação interessante é que os papéis dos modelos se inverteram ao utilizarmos a validação cruzada na construção dos modelos. 
 
